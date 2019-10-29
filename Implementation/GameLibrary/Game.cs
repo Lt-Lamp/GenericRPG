@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace GameLibrary {
   public enum GameState {
     LOADING,
+    NEXT_LEVEL,
     TITLE_SCREEN,
     ON_MAP,
     FIGHTING,

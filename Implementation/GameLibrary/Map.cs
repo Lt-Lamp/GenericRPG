@@ -51,6 +51,7 @@ namespace GameLibrary {
         foreach (char c in mapLine) {
           int val = c - '0';
           layout[i, j] = (val == 1 ? 1 : 0);
+          //this is where it reads what the "vals" on teh map mean
           PictureBox pb = CreateMapCell(val, LoadImg);
           if (pb != null) {
             pb.Top = top;
@@ -62,6 +63,19 @@ namespace GameLibrary {
             CharacterStartCol = j;
             character = new Character(pb, new Position(i, j), this);
           }
+          //makes the 3(next_level) show up on the layout map<works>
+          if (val ==3)
+                    {
+                        layout[i, j] = 3;
+                    }
+          if (val == 4)
+                    {
+                        layout[i, j] = 4;
+                    }
+          if(val == 5)
+                    {
+                        layout[i, j] = 5;
+                    }
           left += BLOCK_SIZE;
           j++;
         }
@@ -87,9 +101,11 @@ namespace GameLibrary {
 
     private PictureBox CreateMapCell(int legendValue, Func<string, Bitmap> LoadImg) {
       PictureBox result = null;
+      //this is just for the pictures to load 
       switch (legendValue) {
         // walkable
         case 0:
+                    result = null; 
           break;
 
         // wall
@@ -113,12 +129,14 @@ namespace GameLibrary {
           break;
 
         // next level
+        // only reads the txt file , need to load new level at charater?
         case 3:
-          result = new PictureBox() {
+          result = new PictureBox()
+          {
             BackgroundImage = LoadImg("level2"),
             BackgroundImageLayout = ImageLayout.Stretch,
             Width = BLOCK_SIZE,
-            Height = BLOCK_SIZE
+            Height = BLOCK_SIZE  
           };
           break;
 
@@ -146,15 +164,18 @@ namespace GameLibrary {
     }
 
     public bool IsValidPos(Position pos) {
-      if (pos.row < 0 || pos.row >= NumRows ||
-          pos.col < 0 || pos.col >= NumCols ||
-          layout[pos.row, pos.col] == 1) {
+      if (pos.row < 0 || pos.row >= NumRows || pos.col < 0 || pos.col >= NumCols || layout[pos.row, pos.col] == 1) {
         return false;
       }
       if (rand.NextDouble() < encounterChance) {
         encounterChance = 0.15;
         Game.GetGame().ChangeState(GameState.FIGHTING);
       }
+      //TODO:ZAB
+      if (layout[pos.row, pos.col] == 3)
+            {
+                Game.GetGame().ChangeState(GameState.NEXT_LEVEL);
+            }
       else {
         encounterChance += 0.10;
       }

@@ -16,7 +16,6 @@ namespace GenericRPG {
 
     private void FrmMap_Load(object sender, EventArgs e) {
       game = Game.GetGame();
-
       map = new Map();
       character = map.LoadMap("Resources/level.txt", grpMap, 
         str => Resources.ResourceManager.GetObject(str) as Bitmap
@@ -48,6 +47,16 @@ namespace GenericRPG {
           FrmArena frmArena = new FrmArena();
           frmArena.Show();
         }
+        if (game.State == GameState.NEXT_LEVEL)
+                {
+                    //TODO:ZAB
+                    
+                    map = new Map();
+                    character = map.LoadMap("Resources/level2.txt", grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
+                    Width = grpMap.Width + 25;
+                    Height = grpMap.Height + 50;
+                    game.SetCharacter(character);
+                }
       }
     }
   }

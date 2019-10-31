@@ -120,6 +120,7 @@
     <Content Include="Resources\levelup.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\GUN.png" />
     <None Include="Resources\level2.png" />
     <None Include="Resources\quitgame.png" />
     <None Include="Resources\enemy.png" />

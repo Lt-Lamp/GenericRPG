@@ -10,6 +10,7 @@ namespace GenericRPG {
     private Game game;
     private Character character;
     private Enemy enemy;
+    private Weapons weapon;
     private Random rand;
 
     public FrmArena() {

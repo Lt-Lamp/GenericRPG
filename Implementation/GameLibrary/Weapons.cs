@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameLibrary
 {
-    class Weapons
+    public class Weapons
     {
         public string Name { get; set; }
         public int Damage { get; set; }

@@ -50,12 +50,17 @@ namespace GenericRPG {
         if (game.State == GameState.NEXT_LEVEL)
                 {
                     //TODO:ZAB
-                    
-                    map = new Map();
+                    game.ChangeState(GameState.LOADING);
+                    // needs character so he moves on level 2 and more 
                     character = map.LoadMap("Resources/level2.txt", grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
                     Width = grpMap.Width + 25;
                     Height = grpMap.Height + 50;
-                    game.SetCharacter(character);
+                    //moves chararter back to start of level 
+                    character.BackToStart();
+                    //code below resets the character to level 1 
+                    //game.SetCharacter(character);
+                   
+                  
                 }
       }
     }

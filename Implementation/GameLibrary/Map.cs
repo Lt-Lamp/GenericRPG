@@ -26,12 +26,15 @@ namespace GameLibrary {
     /// <param name="LoadImg"></param>
     /// <returns></returns>
     public Character LoadMap(string mapFile, GroupBox grpMap, Func<string, Bitmap> LoadImg) {
+      //TOD: ZAB
+      //clears the map of pictures
+      grpMap.Controls.Clear();
       // declare and initialize locals
       int top = TOP_PAD;
       int left = BOUNDARY_PAD;
       Character character = null;
       List<string> mapLines = new List<string>();
-
+      
       // read from map file
       using (FileStream fs = new FileStream(mapFile, FileMode.Open)) {
         using (StreamReader sr = new StreamReader(fs)) {
@@ -42,7 +45,7 @@ namespace GameLibrary {
           }
         }
       }
-
+      
       // load map file into layout and create PictureBox objects
       layout = new int[mapLines.Count, mapLines[0].Length];
       int i = 0;
@@ -51,19 +54,31 @@ namespace GameLibrary {
         foreach (char c in mapLine) {
           int val = c - '0';
           layout[i, j] = (val == 1 ? 1 : 0);
-          //this is where it reads what the "vals" on teh map mean
+          //this is where it reads what the "vals" on the map to see which pictures to load.
           PictureBox pb = CreateMapCell(val, LoadImg);
           if (pb != null) {
             pb.Top = top;
             pb.Left = left;
             grpMap.Controls.Add(pb);
+            
           }
           if (val == 2) {
             CharacterStartRow = i;
             CharacterStartCol = j;
-            character = new Character(pb, new Position(i, j), this);
+            //TODO : ZAB
+            //just a check probbily not needed
+            if (character == null)
+                        {
+                            character = new Character(pb, new Position(i, j), this);
+                        }
+            else
+                        {
+                            layout[i, j] = 1;
+                        }
+      
           }
-          //makes the 3(next_level) show up on the layout map<works>
+          //TODO : ZAB
+          //makes the 3(next_level) show up on the layout map along with other numbers 
           if (val ==3)
                     {
                         layout[i, j] = 3;
@@ -98,17 +113,17 @@ namespace GameLibrary {
       // return Character object from reading map
       return character;
     }
+     
 
     private PictureBox CreateMapCell(int legendValue, Func<string, Bitmap> LoadImg) {
-      PictureBox result = null;
+    PictureBox result = null;
       //this is just for the pictures to load 
       switch (legendValue) {
         // walkable
         case 0:
-                    result = null; 
-          break;
-
-        // wall
+         break;
+        
+        //wall
         case 1:
           result = new PictureBox() {
             BackgroundImage = LoadImg("wall"),
@@ -117,6 +132,8 @@ namespace GameLibrary {
             Height = BLOCK_SIZE
           };
           break;
+                    
+
 
         // character
         case 2:
@@ -159,6 +176,10 @@ namespace GameLibrary {
             Height = BLOCK_SIZE
           };
           break;
+        //this not needed in c# .....but keeping  it 
+        default:
+
+        break;
       }
       return result;
     }
@@ -167,6 +188,7 @@ namespace GameLibrary {
       if (pos.row < 0 || pos.row >= NumRows || pos.col < 0 || pos.col >= NumCols || layout[pos.row, pos.col] == 1) {
         return false;
       }
+      //DEBUG:ZAB
       if (rand.NextDouble() < encounterChance) {
         encounterChance = 0.15;
         Game.GetGame().ChangeState(GameState.FIGHTING);
@@ -177,6 +199,7 @@ namespace GameLibrary {
                 Game.GetGame().ChangeState(GameState.NEXT_LEVEL);
             }
       else {
+        //DEBUG:ZAB
         encounterChance += 0.10;
       }
 

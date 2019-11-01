@@ -18,6 +18,7 @@ namespace GameLibrary {
     private static Game game;
 
     public Character Character { get; private set; }
+   // public Weapon FirstWeapon { get; private set; }
     public GameState State { get; private set; }
 
     private Game() {
@@ -37,5 +38,10 @@ namespace GameLibrary {
     public void SetCharacter(Character character) {
       Character = character;
     }
+
+    //public void SetWeapon(Weapon weapon)
+    //    {
+    //        FirstWeapon = weapon;
+    //    }
   }
 }

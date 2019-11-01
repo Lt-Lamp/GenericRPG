@@ -9,8 +9,9 @@ namespace GenericRPG {
   public partial class FrmArena : Form {
     private Game game;
     private Character character;
+    //public Weapon firstWeapon { get; private set; }
     private Enemy enemy;
-    private Weapons weapon;
+    //private Weapon weapon;
     private Random rand;
 
     public FrmArena() {
@@ -28,6 +29,7 @@ namespace GenericRPG {
 
       game = Game.GetGame();
       character = game.Character;
+      firstWeapon = game.FirstWeapon;
       enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
 
       // stats
@@ -60,7 +62,8 @@ namespace GenericRPG {
     }
     private void btnSimpleAttack_Click(object sender, EventArgs e) {
       float prevEnemyHealth = enemy.Health;
-      character.SimpleAttack(enemy);
+      //character.SimpleAttack(enemy);
+      weapon.SimpleWeaponAttack(enemy);
       float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
       lblEnemyDamage.Text = enemyDamage.ToString();
       lblEnemyDamage.Visible = true;

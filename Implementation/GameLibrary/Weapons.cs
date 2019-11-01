@@ -11,6 +11,7 @@ namespace GameLibrary
     {
         public string Name { get; set; }
         public int Damage { get; set; }
+
             
         
        public Weapons(string name , int damage)
@@ -19,5 +20,16 @@ namespace GameLibrary
             Damage = damage;
         }
 
+
+        public void SimpleWeaponAttack(Mortal receiver)
+        {
+            float baseDamage = Damage;
+
+        }
+
+        public void ManaWeaponAttack(Mortal receiver)
+        {
+            float baseDamage = Damage + 3;
+        }
     }
 }

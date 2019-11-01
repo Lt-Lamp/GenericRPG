@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
 
 namespace GameLibrary {
   public struct Position {
@@ -16,12 +18,43 @@ namespace GameLibrary {
     }
   }
 
+public struct Inventory
+{
+    public int MainWeapon;
+    public List<Weapons> WeaponList;
+    public Inventory(int main, List<Weapons> weplist)
+        {
+            this.MainWeapon = main;
+            this.WeaponList = weplist;
+        }
+    public void AddWeapon(Weapons weapon)
+        {
+            WeaponList.Add(weapon);
+        }
+    public void SetMainWeapon(int choosenindex)
+        {
+            if(choosenindex < WeaponList.Count + 1 && choosenindex < 7)
+            {
+                MainWeapon = choosenindex;
+            }
+        }
+    public List<Weapons> ReturnWeaponList()
+        {
+            return WeaponList;
+        }
+    public Weapons ReturnMainWeapon()
+        {
+            return WeaponList[MainWeapon];
+        }
+}
+
   /// <summary>
   /// This represents our player in our game
   /// </summary>
   public class Character : Mortal {
     public PictureBox Pic { get; private set; }
     private Position pos;
+    public Inventory inventory;
     private Map map;
     public float XP { get; private set; }
     public bool ShouldLevelUp { get; private set; }
@@ -51,6 +84,10 @@ namespace GameLibrary {
     public override void LevelUp() {
       base.LevelUp();
       ShouldLevelUp = false;
+    }
+
+    public void PickUpWeapon() {
+      //inventory.AddWeapon(map.)
     }
 
     public void BackToStart() {

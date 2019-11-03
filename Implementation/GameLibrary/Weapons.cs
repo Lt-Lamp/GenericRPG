@@ -29,8 +29,6 @@ namespace GameLibrary
         public void SimpleWeaponAttack(Mortal receiver)
         {
             float baseDamage = Damage;
-            float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
-            float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
             receiver.Health -= (baseDamage * 1);
 
         }

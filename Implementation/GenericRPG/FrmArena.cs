@@ -107,26 +107,35 @@ namespace GenericRPG {
     private void btnManaAttack_Click(object sender, EventArgs e)
     {
         float prevEnemyHealth = enemy.Health;
-        weapon.ManaWeaponAttack(enemy);
-        character.Mana -= 5;
         float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
         lblEnemyDamage.Text = enemyDamage.ToString();
         lblEnemyDamage.Visible = true;
         tmrEnemyDamage.Enabled = true;
-        if (character.Mana<= 0)
+
+        if (character.Mana != 0)
+        {
+            weapon.ManaWeaponAttack(enemy);
+            character.Mana -= 5;
+        }
+        else
+        {
+            
+                Console.WriteLine("You Can't use Mana");
+        };
+
+        if (enemy.Health <= 0)
         {
             character.GainXP(enemy.XpDropped);
-            lblEndFightMessage.Text = "You ran out of Mana";
+            lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
             lblEndFightMessage.Visible = true;
-            //Refresh();
-            //Thread.Sleep(1200);
-            //EndFight();
-            //if (character.ShouldLevelUp)
-
-            //{
-            //    FrmLevelUp frmLevelUp = new FrmLevelUp();
-            //    frmLevelUp.Show();
-            //}
+            Refresh();
+            Thread.Sleep(1200);
+            EndFight();
+            if (character.ShouldLevelUp)
+            {
+                FrmLevelUp frmLevelUp = new FrmLevelUp();
+                frmLevelUp.Show();
+            }
         }
         else
         {
@@ -153,7 +162,7 @@ namespace GenericRPG {
                 UpdateStats();
             }
         }
-    }
+     }
 
   private void btnRun_Click(object sender, EventArgs e) {
       if (rand.NextDouble() < 0.25) {

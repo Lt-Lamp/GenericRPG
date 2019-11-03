@@ -9,9 +9,8 @@ namespace GenericRPG {
   public partial class FrmArena : Form {
     private Game game;
     private Character character;
-    //public Weapon firstWeapon { get; private set; }
     private Enemy enemy;
-    //private Weapon weapon;
+    private Weapon weapon;
     private Random rand;
 
     public FrmArena() {
@@ -29,8 +28,8 @@ namespace GenericRPG {
 
       game = Game.GetGame();
       character = game.Character;
-      firstWeapon = game.FirstWeapon;
       enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
+      weapon = new Weapon(Resources.GUN);
 
       // stats
       UpdateStats();
@@ -57,12 +56,13 @@ namespace GenericRPG {
       lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
       lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
 
+      //lblWeaponDamage.Text = weapon.Damage.ToString();
+
       lblPlayerHealth.Text = Math.Round(character.Health).ToString();
       lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
     }
     private void btnSimpleAttack_Click(object sender, EventArgs e) {
       float prevEnemyHealth = enemy.Health;
-      //character.SimpleAttack(enemy);
       weapon.SimpleWeaponAttack(enemy);
       float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
       lblEnemyDamage.Text = enemyDamage.ToString();
@@ -103,7 +103,59 @@ namespace GenericRPG {
         }
       }
     }
-    private void btnRun_Click(object sender, EventArgs e) {
+
+    private void btnManaAttack_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        weapon.ManaWeaponAttack(enemy);
+        character.Mana -= 5;
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        if (character.Mana<= 0)
+        {
+            character.GainXP(enemy.XpDropped);
+            lblEndFightMessage.Text = "You ran out of Mana";
+            lblEndFightMessage.Visible = true;
+            //Refresh();
+            //Thread.Sleep(1200);
+            //EndFight();
+            //if (character.ShouldLevelUp)
+
+            //{
+            //    FrmLevelUp frmLevelUp = new FrmLevelUp();
+            //    frmLevelUp.Show();
+            //}
+        }
+        else
+        {
+            float prevPlayerHealth = character.Health;
+            enemy.SimpleAttack(character);
+            float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
+            lblPlayerDamage.Text = playerDamage.ToString();
+            lblPlayerDamage.Visible = true;
+            tmrPlayerDamage.Enabled = true;
+            if (character.Health <= 0)
+            {
+                UpdateStats();
+                game.ChangeState(GameState.DEAD);
+                lblEndFightMessage.Text = "You Were Defeated!";
+                lblEndFightMessage.Visible = true;
+                Refresh();
+                Thread.Sleep(1200);
+                EndFight();
+                FrmGameOver frmGameOver = new FrmGameOver();
+                frmGameOver.Show();
+            }
+            else
+            {
+                UpdateStats();
+            }
+        }
+    }
+
+  private void btnRun_Click(object sender, EventArgs e) {
       if (rand.NextDouble() < 0.25) {
         lblEndFightMessage.Text = "You Ran Like a Coward!";
         lblEndFightMessage.Visible = true;

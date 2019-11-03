@@ -421,8 +421,9 @@
       this.btnMagicAttack.Name = "btnMagicAttack";
       this.btnMagicAttack.Size = new System.Drawing.Size(86, 46);
       this.btnMagicAttack.TabIndex = 14;
-      this.btnMagicAttack.Text = "Magic Attack";
+      this.btnMagicAttack.Text = "Mana Attack";
       this.btnMagicAttack.UseVisualStyleBackColor = false;
+      this.btnMagicAttack.Click += new System.EventHandler(this.btnManaAttack_Click);
       // 
       // btnRun
       // 

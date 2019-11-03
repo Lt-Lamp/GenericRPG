@@ -7,14 +7,19 @@ using System.Threading.Tasks;
 
 namespace GameLibrary
 {
-    public class Weapons
+    public class Weapons 
     {
+        #region Constants
+        private const float SIMPLEATTACK_RANDOM_AMT = 0.25f;
+        #endregion
+
         public string Name { get; set; }
         public int Damage { get; set; }
+        //public float Health { get; protected set; }
 
-            
-        
-       public Weapons(string name , int damage)
+        private Random rand;
+
+        public Weapons(string name , int damage)
         {
             Name = name;
             Damage = damage;
@@ -24,12 +29,17 @@ namespace GameLibrary
         public void SimpleWeaponAttack(Mortal receiver)
         {
             float baseDamage = Damage;
+            float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
+            float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
+            receiver.Health -= (baseDamage * 1);
 
         }
 
         public void ManaWeaponAttack(Mortal receiver)
         {
             float baseDamage = Damage + 3;
+            //receiver.Mana -= 5;
+            receiver.Health -= (baseDamage * 1);
         }
     }
 }

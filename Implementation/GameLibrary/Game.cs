@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace GameLibrary {
   public enum GameState {
     LOADING,
+    NEXT_LEVEL,
     TITLE_SCREEN,
     ON_MAP,
     FIGHTING,
@@ -18,6 +19,7 @@ namespace GameLibrary {
     private static Game game;
 
     public Character Character { get; private set; }
+   // public Weapon FirstWeapon { get; private set; }
     public GameState State { get; private set; }
 
     private Game() {
@@ -37,5 +39,10 @@ namespace GameLibrary {
     public void SetCharacter(Character character) {
       Character = character;
     }
+
+    //public void SetWeapon(Weapon weapon)
+    //    {
+    //        FirstWeapon = weapon;
+    //    }
   }
 }

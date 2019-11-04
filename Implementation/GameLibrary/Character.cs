@@ -29,7 +29,14 @@ public struct Inventory
         }
     public void AddWeapon(Weapons weapon)
         {
-            WeaponList.Add(weapon);
+            if (MainWeapon == -1)
+            {
+                WeaponList[0] = weapon;
+            }
+            else
+            {
+                WeaponList.Add(weapon);
+            }
         }
     public void SetMainWeapon(int choosenindex)
         {
@@ -46,7 +53,12 @@ public struct Inventory
         {
             return WeaponList[MainWeapon];
         }
-}
+    public void ResetWeaponList()
+        {
+            WeaponList.Clear();
+            MainWeapon = -1;
+        }
+    }
 
   /// <summary>
   /// This represents our player in our game
@@ -65,10 +77,12 @@ public struct Inventory
     /// <param name="pb"></param>
     /// <param name="pos"></param>
     /// <param name="map"></param>
-    public Character(PictureBox pb, Position pos, Map map) : base("Player 1", 1) {
+    public Character(PictureBox pb, Position pos, Inventory inv, Map map) : base("Player 1", 1) {
       Pic = pb;
       this.pos = pos;
+      this.inventory = inv;
       this.map = map;
+      
       ShouldLevelUp = false;
     }
 

@@ -12,7 +12,7 @@ namespace GenericRPG {
 
     public FrmMap() {
       InitializeComponent();
-    }
+     }
 
     private void FrmMap_Load(object sender, EventArgs e) {
       game = Game.GetGame();
@@ -21,6 +21,7 @@ namespace GenericRPG {
       character = map.LoadMap("Resources/level.txt", grpMap, 
         str => Resources.ResourceManager.GetObject(str) as Bitmap
       );
+      this.Focus();
       Width = grpMap.Width + 25;
       Height = grpMap.Height + 50;
       game.SetCharacter(character);
@@ -41,6 +42,10 @@ namespace GenericRPG {
         case Keys.Down:
           dir = MoveDir.DOWN;
           break;
+        case Keys.I:
+          FrmInventory frmInventory = new FrmInventory();
+          frmInventory.Show();
+          break;
       }
       if (dir != MoveDir.NO_MOVE) {
         character.Move(dir);
@@ -50,5 +55,5 @@ namespace GenericRPG {
         }
       }
     }
-  }
+    }
 }

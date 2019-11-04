@@ -60,7 +60,7 @@ namespace GameLibrary {
           if (val == 2) {
             CharacterStartRow = i;
             CharacterStartCol = j;
-            character = new Character(pb, new Position(i, j), this);
+            character = new Character(pb, new Position(i, j), new Inventory(-1, new List<Weapons>()), this);
           }
           left += BLOCK_SIZE;
           j++;

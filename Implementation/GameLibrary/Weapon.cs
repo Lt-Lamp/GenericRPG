@@ -11,11 +11,31 @@ namespace GameLibrary
     {
         public Bitmap Img { get; set; }
 
+        private static readonly Random rand = new Random();
+        private static readonly List<string> names = new List<string>()
+        {
+            "Noob", "BOSS GUN", "DESTROYER"
+        };
 
-        public BaseWeapon(Bitmap img) : base("THE DESTROYER", 1)
+        private static readonly List<int> damage = new List<int>()
+        {
+            10, 15, 20, 25
+        };
+
+        public Weapon(Bitmap img) : base(RandName(), 4)
         {
             Img = img;
         }
-    }
 
+        public static string RandName()
+        {
+            return names[rand.Next(names.Count)];
+        }
+
+        //public static string RandDamage()
+        //{
+        //    return damage[rand.Next((int)damage)];
+        //}
+
+    }
 }

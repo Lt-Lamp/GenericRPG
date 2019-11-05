@@ -21,40 +21,48 @@ namespace GameLibrary {
 public struct Inventory
 {
     public int MainWeapon;
-    public List<Weapons> WeaponList;
-    public Inventory(int main, List<Weapons> weplist)
+    public List<Weapon> WeaponList;
+    public Inventory(int main, List<Weapon> weplist)
         {
             this.MainWeapon = main;
             this.WeaponList = weplist;
         }
-    public void AddWeapon(Weapons weapon)
+    public void AddWeapon(Weapon weapon)
         {
-            if (MainWeapon == -1)
+            //Makes sure there aren't already 4 weapons in the inventory
+            if(WeaponList.Count < 4)
             {
-                WeaponList[0] = weapon;
-            }
-            else
-            {
-                WeaponList.Add(weapon);
+                //if MainWeapon is at a default of -1, then set it to 0.
+                if (MainWeapon == -1)
+                {
+                    MainWeapon = 0;
+                    WeaponList.Add(weapon);
+                }
+                else
+                {
+                    WeaponList.Add(weapon);
+                }
             }
         }
     public void SetMainWeapon(int choosenindex)
         {
-            if(choosenindex < WeaponList.Count + 1 && choosenindex < 7)
+            //Checks if weaponindex is less than number in the inventory and checks to make sure weapons dont get over a total of 4
+            if(choosenindex < WeaponList.Count + 1 && choosenindex < 4)
             {
                 MainWeapon = choosenindex;
             }
         }
-    public List<Weapons> ReturnWeaponList()
+    public List<Weapon> ReturnWeaponList()
         {
             return WeaponList;
         }
-    public Weapons ReturnMainWeapon()
+    public Weapon ReturnMainWeapon()
         {
             return WeaponList[MainWeapon];
         }
     public void ResetWeaponList()
         {
+            //Clear the weapon list and reset the choosen weapon index to -1
             WeaponList.Clear();
             MainWeapon = -1;
         }
@@ -98,10 +106,6 @@ public struct Inventory
     public override void LevelUp() {
       base.LevelUp();
       ShouldLevelUp = false;
-    }
-
-    public void PickUpWeapon() {
-      //inventory.AddWeapon(map.)
     }
 
     public void BackToStart() {

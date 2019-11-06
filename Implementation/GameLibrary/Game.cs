@@ -11,6 +11,7 @@ namespace GameLibrary {
     TITLE_SCREEN,
     ON_MAP,
     FIGHTING,
+    BOSSFIGHT,
     DEAD,
   }
 

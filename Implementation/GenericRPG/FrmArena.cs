@@ -117,63 +117,72 @@ namespace GenericRPG {
 
     private void btnManaAttack_Click(object sender, EventArgs e)
     {
+        float prevCharacterMana = character.Mana;
         float prevEnemyHealth = enemy.Health;
         float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
         lblEnemyDamage.Text = enemyDamage.ToString();
+        SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
+        
         lblEnemyDamage.Visible = true;
         tmrEnemyDamage.Enabled = true;
+        
 
         if (character.Mana != 0)
         {
-            weapon.ManaWeaponAttack(enemy);
-            character.Mana -= 5;
-        }
-        else
-        {
-            
-                Console.WriteLine("You Can't use Mana");
-        };
-
-        if (enemy.Health <= 0)
-        {
-            character.GainXP(enemy.XpDropped);
-            lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
-            lblEndFightMessage.Visible = true;
-            Refresh();
-            Thread.Sleep(1200);
-            EndFight();
-            if (character.ShouldLevelUp)
+        sp.Play();
+        weapon.ManaWeaponAttack(enemy);
+        character.Mana -= 5;
+            if (enemy.Health <= 0)
             {
-                FrmLevelUp frmLevelUp = new FrmLevelUp();
-                frmLevelUp.Show();
-            }
-        }
-        else
-        {
-            float prevPlayerHealth = character.Health;
-            enemy.SimpleAttack(character);
-            float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
-            lblPlayerDamage.Text = playerDamage.ToString();
-            lblPlayerDamage.Visible = true;
-            tmrPlayerDamage.Enabled = true;
-            if (character.Health <= 0)
-            {
-                UpdateStats();
-                game.ChangeState(GameState.DEAD);
-                lblEndFightMessage.Text = "You Were Defeated!";
+                character.GainXP(enemy.XpDropped);
+                lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
                 lblEndFightMessage.Visible = true;
                 Refresh();
                 Thread.Sleep(1200);
+                character.Mana = 40;
                 EndFight();
-                FrmGameOver frmGameOver = new FrmGameOver();
-                frmGameOver.Show();
+                if (character.ShouldLevelUp)
+                {
+                    FrmLevelUp frmLevelUp = new FrmLevelUp();
+                    frmLevelUp.Show();
+                }
             }
             else
             {
-                UpdateStats();
+                float prevPlayerHealth = character.Health;
+                float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
+                lblPlayerDamage.Text = playerDamage.ToString();
+                lblPlayerDamage.Visible = true;
+                tmrPlayerDamage.Enabled = true;
+                sp = new SoundPlayer(@"Resources\emeny_attack.wav");
+                sp.Play();
+                if (character.Health <= 0)
+                {
+                    UpdateStats();
+                    game.ChangeState(GameState.DEAD);
+                    lblEndFightMessage.Text = "You Were Defeated!";
+                    lblEndFightMessage.Visible = true;
+                    Refresh();
+                    Thread.Sleep(1200);
+                    EndFight();
+                    FrmGameOver frmGameOver = new FrmGameOver();
+                    frmGameOver.Show();
+                }
+                else
+                {
+                    UpdateStats();
+                        
+                }
             }
         }
-     }
+        else
+        {
+            lblEndFightMessage.Text = "You have no more mana";
+            lblEndFightMessage.Visible = true;
+            lblEnemyDamage.Visible = false ;
+
+        };
+    }
 
   private void btnRun_Click(object sender, EventArgs e) {
       if (rand.NextDouble() < 0.25) {

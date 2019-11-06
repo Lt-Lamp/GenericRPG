@@ -36,10 +36,9 @@
             this.btnPlayAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlayAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlayAgain.ForeColor = System.Drawing.Color.White;
-            this.btnPlayAgain.Location = new System.Drawing.Point(131, 311);
-            this.btnPlayAgain.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPlayAgain.Location = new System.Drawing.Point(98, 253);
             this.btnPlayAgain.Name = "btnPlayAgain";
-            this.btnPlayAgain.Size = new System.Drawing.Size(183, 52);
+            this.btnPlayAgain.Size = new System.Drawing.Size(137, 42);
             this.btnPlayAgain.TabIndex = 0;
             this.btnPlayAgain.Text = "Play Again";
             this.btnPlayAgain.UseVisualStyleBackColor = false;
@@ -53,10 +52,9 @@
             this.btnQuit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuit.ForeColor = System.Drawing.Color.White;
-            this.btnQuit.Location = new System.Drawing.Point(131, 382);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQuit.Location = new System.Drawing.Point(98, 310);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(183, 52);
+            this.btnQuit.Size = new System.Drawing.Size(137, 42);
             this.btnQuit.TabIndex = 1;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = false;
@@ -70,10 +68,9 @@
             this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContinue.ForeColor = System.Drawing.Color.White;
-            this.btnContinue.Location = new System.Drawing.Point(322, 346);
-            this.btnContinue.Margin = new System.Windows.Forms.Padding(4);
+            this.btnContinue.Location = new System.Drawing.Point(98, 370);
             this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(183, 52);
+            this.btnContinue.Size = new System.Drawing.Size(137, 42);
             this.btnContinue.TabIndex = 2;
             this.btnContinue.Text = "Continue";
             this.btnContinue.UseVisualStyleBackColor = false;
@@ -81,15 +78,14 @@
             // 
             // FrmGameOver
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GenericRPG.Properties.Resources.gameover;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1207, 580);
+            this.ClientSize = new System.Drawing.Size(905, 471);
             this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnPlayAgain);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmGameOver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Over";

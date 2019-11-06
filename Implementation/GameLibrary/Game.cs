@@ -40,9 +40,6 @@ namespace GameLibrary {
       Character = character;
     }
 
-    //public void SetWeapon(Weapon weapon)
-    //    {
-    //        FirstWeapon = weapon;
-    //    }
+ 
   }
 }

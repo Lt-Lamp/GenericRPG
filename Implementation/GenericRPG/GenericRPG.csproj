@@ -54,6 +54,12 @@
     <Compile Include="FrmArena.Designer.cs">
       <DependentUpon>FrmArena.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBossFight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBossFight.Designer.cs">
+      <DependentUpon>FrmBossFight.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGameOver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmArena.resx">
       <DependentUpon>FrmArena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBossFight.resx">
+      <DependentUpon>FrmBossFight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGameOver.resx">
       <DependentUpon>FrmGameOver.cs</DependentUpon>
@@ -115,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\boss.png" />
+    <Content Include="Resources\bossmusic.wav" />
     <Content Include="Resources\won_the_battle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

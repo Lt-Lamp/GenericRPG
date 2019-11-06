@@ -25,24 +25,24 @@ namespace GenericRPG {
       Close();
     }
     private void FrmArena_Load(object sender, EventArgs e) {
-      rand = new Random();
 
-      game = Game.GetGame();
-      character = game.Character;
-      enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
-      boss = new Boss(rand.Next(character.Level + 3), Resources.Boss);
+                rand = new Random();
 
+                game = Game.GetGame();
+                character = game.Character;
+                enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
 
-      // stats
-      UpdateStats();
+                // stats
+                UpdateStats();
 
-      // pictures
-      picCharacter.BackgroundImage = character.Pic.BackgroundImage;
-      picEnemy.BackgroundImage = enemy.Img;
+                // pictures
+                picCharacter.BackgroundImage = character.Pic.BackgroundImage;
+                picEnemy.BackgroundImage = enemy.Img;
 
-      // names
-      lblPlayerName.Text = character.Name;
-      lblEnemyName.Text = enemy.Name;
+                // names
+                lblPlayerName.Text = character.Name;
+                lblEnemyName.Text = enemy.Name;
+            
     }
     public void UpdateStats() {
             

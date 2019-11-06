@@ -9,6 +9,7 @@ namespace GameLibrary {
     private const float WEAKEN_MIN = 1.25f;
     private const float WEAKEN_MAX = 1.85f;
 
+
     public Bitmap Img { get; private set; }
     public float XpDropped { get; private set; }
 
@@ -16,6 +17,7 @@ namespace GameLibrary {
     private static readonly List<string> names = new List<string>() {
       "Wily", "Bob", "Dr. Light", "WallCrusher"
     };
+
 
     public Enemy(int level, Bitmap img) : base(RandName(), level) {
       Img = img;
@@ -29,7 +31,7 @@ namespace GameLibrary {
       XpDropped = (float)rand.NextDouble() * (MAX_XP_DROP - MIN_XP_DROP) + MIN_XP_DROP;
     }
 
-    public static string RandName() {
+        public static string RandName() {
       return names[rand.Next(names.Count)];
     }
   }

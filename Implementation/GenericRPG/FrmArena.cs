@@ -12,6 +12,7 @@ namespace GenericRPG {
     private Character character;
     private Enemy enemy;
     private Random rand;
+    private Boss boss;
 
     public FrmArena() {
       InitializeComponent();
@@ -29,6 +30,8 @@ namespace GenericRPG {
       game = Game.GetGame();
       character = game.Character;
       enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
+      boss = new Boss(rand.Next(character.Level + 3), Resources.Boss);
+
 
       // stats
       UpdateStats();

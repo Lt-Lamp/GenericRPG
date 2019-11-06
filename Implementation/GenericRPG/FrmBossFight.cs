@@ -38,18 +38,18 @@ namespace GenericRPG
 
             game = Game.GetGame();
             character = game.Character;
-            enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
+            boss = new Boss(rand.Next(character.Level + 1), Resources.boss);
 
             // stats
             UpdateStats();
 
             // pictures
             picCharacter.BackgroundImage = character.Pic.BackgroundImage;
-            picEnemy.BackgroundImage = enemy.Img;
+            picEnemy.BackgroundImage = boss.Img;
 
             // names
             lblPlayerName.Text = character.Name;
-            lblEnemyName.Text = enemy.Name;
+            lblEnemyName.Text = boss.Name;
 
             
         }
@@ -63,14 +63,14 @@ namespace GenericRPG
             lblPlayerMana.Text = Math.Round(character.Mana).ToString();
             lblPlayerXp.Text = Math.Round(character.XP).ToString();
 
-            lblEnemyLevel.Text = enemy.Level.ToString();
-            lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
-            lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
-            lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
-            lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
+            lblEnemyLevel.Text = boss.Level.ToString();
+            lblEnemyHealth.Text = Math.Round(boss.Health).ToString();
+            lblEnemyStr.Text = Math.Round(boss.Str).ToString();
+            lblEnemyDef.Text = Math.Round(boss.Def).ToString();
+            lblEnemyMana.Text = Math.Round(boss.Mana).ToString();
 
             lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-            lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+            lblEnemyHealth.Text = Math.Round(boss.Health).ToString();
         }
         private void btnSimpleAttack_Click(object sender, EventArgs e)
         {
@@ -78,21 +78,21 @@ namespace GenericRPG
             {
                 lblEndFightMessage.Visible = false;
             }
-            float prevEnemyHealth = enemy.Health;
-            character.SimpleAttack(enemy);
-            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+            float prevEnemyHealth = boss.Health;
+            character.SimpleAttack(boss);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - boss.Health);
             lblEnemyDamage.Text = enemyDamage.ToString();
             lblEnemyDamage.Visible = true;
             tmrEnemyDamage.Enabled = true;
             //TODO: ZAB
-            SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
-            sp.Play();
-
-            if (enemy.Health <= 0)
+            SoundPlayer sp = new SoundPlayer(@"Resources\bossmusic.wav");
+            if (boss.Health <= 0)
             {
-                character.GainXP(enemy.XpDropped);
-                lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
+                character.GainXP(boss.XpDropped);
+                lblEndFightMessage.Text = "You Gained " + Math.Round(boss.XpDropped) + " xp!";
                 lblEndFightMessage.Visible = true;
+                SoundPlayer bg = new SoundPlayer(@"Resources\victory.wav");
+                bg.Play();
                 Refresh();
                 Thread.Sleep(1200);
                 EndFight();
@@ -105,15 +105,13 @@ namespace GenericRPG
             else
             {
                 float prevPlayerHealth = character.Health;
-                enemy.SimpleAttack(character);
+                boss.SimpleAttack(character);
                 float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
                 lblPlayerDamage.Text = playerDamage.ToString();
                 lblPlayerDamage.Visible = true;
                 tmrPlayerDamage.Enabled = true;
                 //TODO: ZAB
                 Thread.Sleep(175);//that is .175 of a second , lets the sound play out completely 
-                sp = new SoundPlayer(@"Resources\emeny_attack.wav");
-                sp.Play();
                 if (character.Health <= 0)
                 {
                     UpdateStats();
@@ -136,19 +134,16 @@ namespace GenericRPG
         }
         private void btnRun_Click(object sender, EventArgs e)
         {
-
-                enemy.SimpleAttack(character);
+            SoundPlayer sp = new SoundPlayer(@"Resources\bossmusic.wav");
+            enemy.SimpleAttack(character);
                 UpdateStats();
                 lblEndFightMessage.Text = "You can't run from the boss!";
                 lblEndFightMessage.Visible = true;
-            SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
-            sp.Play();
 
             if (character.Health <= 0)
             {
                 UpdateStats();
                 game.ChangeState(GameState.DEAD);
-                sp = new SoundPlayer(@"Resources\game_over.wav");
                 sp.Play();
                 lblEndFightMessage.Text = "You Were Defeated!";
                 lblEndFightMessage.Visible = true;

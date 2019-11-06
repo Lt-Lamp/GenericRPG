@@ -123,8 +123,15 @@
     <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\boss.png" />
-    <Content Include="Resources\bossmusic.wav" />
+    <None Include="Resources\boss.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\bossmusic.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\victory.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\won_the_battle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

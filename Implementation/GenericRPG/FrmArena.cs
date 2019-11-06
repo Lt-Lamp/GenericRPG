@@ -12,7 +12,6 @@ namespace GenericRPG {
     private Character character;
     private Enemy enemy;
     private Random rand;
-    private Boss boss;
 
     public FrmArena() {
       InitializeComponent();
@@ -145,5 +144,10 @@ namespace GenericRPG {
         lblEnemyDamage.Top = 52;
       }
     }
-  }
+
+        private void picEnemy_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

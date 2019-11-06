@@ -91,6 +91,24 @@ namespace GenericRPG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream chararter_attack {
+            get {
+                return ResourceManager.GetStream("chararter_attack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream emeny_attack {
+            get {
+                return ResourceManager.GetStream("emeny_attack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap enemy {
@@ -107,6 +125,15 @@ namespace GenericRPG.Properties {
             get {
                 object obj = ResourceManager.GetObject("fightboss", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream game_over {
+            get {
+                return ResourceManager.GetStream("game_over", resourceCulture);
             }
         }
         
@@ -161,6 +188,31 @@ namespace GenericRPG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 11111111111
+        ///10001000041
+        ///10101011111
+        ///10101000041
+        ///10101010111
+        ///12100000051
+        ///11111111111.
+        /// </summary>
+        internal static string level3 {
+            get {
+                return ResourceManager.GetString("level3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_level {
+            get {
+                object obj = ResourceManager.GetObject("next_level", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap quitgame {
@@ -172,11 +224,11 @@ namespace GenericRPG.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 11111111111
-        ///12222222221
-        ///12222222221
-        ///12222222221
-        ///12222222221
-        ///12222222221
+        ///10000000001
+        ///10000000001
+        ///10000000001
+        ///10000000001
+        ///10000000001
         ///11111111111.
         /// </summary>
         internal static string test {
@@ -202,6 +254,15 @@ namespace GenericRPG.Properties {
             get {
                 object obj = ResourceManager.GetObject("wall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream won_the_battle {
+            get {
+                return ResourceManager.GetStream("won_the_battle", resourceCulture);
             }
         }
     }

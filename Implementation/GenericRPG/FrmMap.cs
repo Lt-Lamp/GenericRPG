@@ -9,6 +9,7 @@ namespace GenericRPG {
     private Character character;
     private Map map;
     private Game game;
+    private int level_on = 0 ;
 
     public FrmMap() {
       InitializeComponent();
@@ -17,6 +18,7 @@ namespace GenericRPG {
     private void FrmMap_Load(object sender, EventArgs e) {
       game = Game.GetGame();
       map = new Map();
+            this.level_on += 1;
       character = map.LoadMap("Resources/level.txt", grpMap, 
         str => Resources.ResourceManager.GetObject(str) as Bitmap
       );
@@ -50,9 +52,11 @@ namespace GenericRPG {
         if (game.State == GameState.NEXT_LEVEL)
                 {
                     //TODO:ZAB
+                    this.level_on += 1;
                     game.ChangeState(GameState.LOADING);
                     // needs character so he moves on level 2 and more 
-                    character = map.LoadMap("Resources/level2.txt", grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
+                    string loadmap = "Resources/level" +level_on.ToString() +".txt";
+                    character = map.LoadMap(loadmap, grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
                     Width = grpMap.Width + 25;
                     Height = grpMap.Height + 50;
                     //moves chararter back to start of level 
@@ -61,6 +65,13 @@ namespace GenericRPG {
                     //game.SetCharacter(character);
                    
                   
+                }
+        if (game.State == GameState.DEAD)
+                {
+                    //TODO : ZAB
+                    game.ChangeState(GameState.DEAD);
+                    FrmGameOver frmGameOver = new FrmGameOver();
+                    frmGameOver.Show();
                 }
       }
     }

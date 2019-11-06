@@ -4,10 +4,10 @@ using System.Drawing;
 
 namespace GameLibrary {
   public class Boss : Mortal {
-    private const float MAX_XP_DROP = 35;
-    private const float MIN_XP_DROP = 15;
-    private const float WEAKEN_MIN = 1.25f;
-    private const float WEAKEN_MAX = 1.85f;
+    private const float MAX_XP_DROP = 75;
+    private const float MIN_XP_DROP = 50;
+    private const float WEAKEN_MIN = 1.05f;
+    private const float WEAKEN_MAX = 1.25f;
 
     public Bitmap Img { get; private set; }
     public float XpDropped { get; private set; }
@@ -17,7 +17,7 @@ namespace GameLibrary {
       "Boss", "Big Boss", "Gottem", "WallBuilder"
     };
 
-    public Boss(int level, Bitmap img) : base(RandName(), level) {
+    public Boss(int level, Bitmap img) : base(RandName(), level+2) {
       Img = img;
 
       // weaken so player has a chance

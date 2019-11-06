@@ -19,7 +19,11 @@ namespace GameLibrary {
     private static Game game;
 
     public Character Character { get; private set; }
-   // public Weapon FirstWeapon { get; private set; }
+    public Weapon FWeapon { get; private set; }
+    public Weapon SWeapon { get; private set; }
+    public Weapon TWeapon { get; private set; }
+    public Weapon RWeapon { get; private set; }
+
     public GameState State { get; private set; }
 
     private Game() {
@@ -40,6 +44,5 @@ namespace GameLibrary {
       Character = character;
     }
 
- 
   }
 }

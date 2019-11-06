@@ -71,7 +71,7 @@ public struct Inventory
   /// <summary>
   /// This represents our player in our game
   /// </summary>
-  public class Character : Mortal {
+  public class Character : Mortal{
     public PictureBox Pic { get; private set; }
     private Position pos;
     public Inventory inventory;
@@ -85,7 +85,8 @@ public struct Inventory
     /// <param name="pb"></param>
     /// <param name="pos"></param>
     /// <param name="map"></param>
-    public Character(PictureBox pb, Position pos, Inventory inv, Map map) : base("Player 1", 1) {
+    /// <param name="inv"></param>
+    public Character(PictureBox pb, Position pos, Inventory inv, Map map) : base("Player 1", 1)  {
       Pic = pb;
       this.pos = pos;
       this.inventory = inv;

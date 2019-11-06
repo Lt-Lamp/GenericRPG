@@ -123,6 +123,7 @@
     <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\cave_crawler.png" />
     <Content Include="Resources\won_the_battle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -138,6 +139,7 @@
     <Content Include="Resources\level3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\world_Destroyer.png" />
     <None Include="Resources\next_level.png" />
     <Content Include="Resources\test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

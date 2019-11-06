@@ -150,7 +150,9 @@ namespace GameLibrary {
         case 3:
           result = new PictureBox()
           {
-            BackgroundImage = LoadImg("level2"),
+            //TODO : ZAB
+            //changed the the IMG b/c we have more then 2 levels
+            BackgroundImage = LoadImg("next_level"),
             BackgroundImageLayout = ImageLayout.Stretch,
             Width = BLOCK_SIZE,
             Height = BLOCK_SIZE  
@@ -197,6 +199,10 @@ namespace GameLibrary {
       if (layout[pos.row, pos.col] == 3)
             {
                 Game.GetGame().ChangeState(GameState.NEXT_LEVEL);
+            }
+      if (layout[pos.row, pos.col] == 5)
+            {
+                Game.GetGame().ChangeState(GameState.DEAD);
             }
       else {
         //DEBUG:ZAB

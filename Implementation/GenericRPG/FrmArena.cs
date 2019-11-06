@@ -2,6 +2,7 @@
 using GenericRPG.Properties;
 using System;
 using System.Drawing;
+using System.Media;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -43,7 +44,8 @@ namespace GenericRPG {
       lblEnemyName.Text = enemy.Name;
     }
     public void UpdateStats() {
-      lblPlayerLevel.Text = character.Level.ToString();
+            
+            lblPlayerLevel.Text = character.Level.ToString();
       lblPlayerHealth.Text = Math.Round(character.Health).ToString();
       lblPlayerStr.Text = Math.Round(character.Str).ToString();
       lblPlayerDef.Text = Math.Round(character.Def).ToString();
@@ -68,7 +70,11 @@ namespace GenericRPG {
       lblEnemyDamage.Text = enemyDamage.ToString();
       lblEnemyDamage.Visible = true;
       tmrEnemyDamage.Enabled = true;
-      if (enemy.Health <= 0) {
+            //TODO: ZAB
+            SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
+            sp.Play();
+            
+            if (enemy.Health <= 0) {
         character.GainXP(enemy.XpDropped);
         lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
         lblEndFightMessage.Visible = true;
@@ -87,9 +93,15 @@ namespace GenericRPG {
         lblPlayerDamage.Text = playerDamage.ToString();
         lblPlayerDamage.Visible = true;
         tmrPlayerDamage.Enabled = true;
+                //TODO: ZAB
+                Thread.Sleep(175);//that is .175 of a second , lets the sound play out completely 
+                sp = new SoundPlayer(@"Resources\emeny_attack.wav");
+                sp.Play();
         if (character.Health <= 0) {
           UpdateStats();
           game.ChangeState(GameState.DEAD);
+          sp = new SoundPlayer(@"Resources\game_over.wav");
+          sp.Play();
           lblEndFightMessage.Text = "You Were Defeated!";
           lblEndFightMessage.Visible = true;
           Refresh();

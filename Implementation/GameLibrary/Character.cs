@@ -60,7 +60,10 @@ namespace GameLibrary {
       Pic.Left = topleft.col;
       Pic.Top = topleft.row;
     }
-    
+    public void Continue()
+        {
+            base.RefillHealthAndMana();
+        }
     public override void ResetStats() {
       base.ResetStats();
       XP = 0;

@@ -2,6 +2,8 @@
 using System;
 using System.Media;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GenericRPG {
   public partial class FrmLevelUp : Form {
@@ -12,6 +14,8 @@ namespace GenericRPG {
     private void FrmLevelUp_Load(object sender, EventArgs e) {
       SoundPlayer sp = new SoundPlayer(@"Resources\levelup.wav");
       sp.Play();
+
+
 
       Character character = Game.GetGame().Character;
       character.RefillHealthAndMana();
@@ -31,7 +35,7 @@ namespace GenericRPG {
     }
 
     private void btnClose_Click(object sender, EventArgs e) {
-      Close();
+            Close();
     }
   }
 }

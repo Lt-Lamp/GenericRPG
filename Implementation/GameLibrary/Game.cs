@@ -28,7 +28,7 @@ namespace GameLibrary {
 
     private Game() {
       State = GameState.LOADING;
-    }
+        }
 
     public static Game GetGame() {
       if (game == null)

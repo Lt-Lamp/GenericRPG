@@ -34,11 +34,7 @@ namespace GenericRPG {
       game = Game.GetGame();
       character = game.Character;
       enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
-            thunder_Fury = new Weapon(Resources.GUN);
-            cave_Crawler = new Weapon(Resources.GUN);
-            world_Destroyer = new Weapon(Resources.GUN);
-            boss_Killer = new Weapon(Resources.GUN);
-      weapon = new Weapon(Resources.GUN);
+      weapon = character.inventory.ReturnMainWeapon();
       
 
       // stats

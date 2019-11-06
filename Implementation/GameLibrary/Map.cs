@@ -71,7 +71,7 @@ namespace GameLibrary {
             //just a check probbily not needed
             if (character == null)
                         {
-                            character = new Character(pb, new Position(i, j), new Inventory(-1, new List<Weapon>()), this);
+                            character = new Character(pb, new Position(i, j), new Inventory(0, new List<Weapon>()), this);
                         }
             else
                         {

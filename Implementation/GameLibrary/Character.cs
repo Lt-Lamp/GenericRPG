@@ -64,7 +64,12 @@ public struct Inventory
         {
             //Clear the weapon list and reset the choosen weapon index to -1
             WeaponList.Clear();
-            MainWeapon = -1;
+            MainWeapon = 0;
+        }
+    public void SetWeaponList(List<Weapon> weaponList)
+        {
+            WeaponList.Clear();
+            WeaponList = weaponList;
         }
     }
 

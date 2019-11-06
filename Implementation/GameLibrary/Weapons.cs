@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameLibrary
 {
-    public class Weapons 
+    abstract public class Weapons 
     {
         #region Constants
         private const float SIMPLEATTACK_RANDOM_AMT = 0.25f;
@@ -16,14 +16,6 @@ namespace GameLibrary
         public string Name { get; set; }
         public int Damage { get; set; }
         //public float Health { get; protected set; }
-
-        private Random rand;
-
-        public Weapons(string name , int damage)
-        {
-            Name = name;
-            Damage = damage;
-        }
 
 
         public void SimpleWeaponAttack(Mortal receiver)

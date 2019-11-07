@@ -64,7 +64,12 @@ namespace GenericRPG {
           FrmArena frmArena = new FrmArena();
           frmArena.Show();
         }
-        if (game.State == GameState.NEXT_LEVEL)
+        if (game.State == GameState.BOSSFIGHT) {
+          FrmBossFight frmBossFight = new FrmBossFight();
+          frmBossFight.Show();
+          
+          }
+                if (game.State == GameState.NEXT_LEVEL)
                 {
                     //TODO:ZAB
                     this.level_on += 1;

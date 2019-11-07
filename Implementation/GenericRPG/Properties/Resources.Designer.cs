@@ -10,8 +10,9 @@
 
 namespace GenericRPG.Properties {
     using System;
-    
-    
+    using System.Drawing;
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -31,7 +32,8 @@ namespace GenericRPG.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -121,11 +123,11 @@ namespace GenericRPG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Toad
+        internal static System.Drawing.Bitmap boss
         {
             get
             {
-                object obj = ResourceManager.GetObject("Toad", resourceCulture);
+                object obj = ResourceManager.GetObject("boss", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -25,7 +25,7 @@ namespace GenericRPG
 			game = Game.GetGame();
 			FrmMap frmMap = new FrmMap();
 			frmMap.Show();
-
+			this.Hide();
 		}
 
 		private void btnLoadGame_Click(object sender, EventArgs e)

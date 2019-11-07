@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPlayerWeaponCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -445,9 +444,7 @@
             // weaponOnePic
             // 
             this.weaponOnePic.BackColor = System.Drawing.Color.Transparent;
-            this.weaponOnePic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("weaponOnePic.BackgroundImage")));
             this.weaponOnePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.weaponOnePic.Image = ((System.Drawing.Image)(resources.GetObject("weaponOnePic.Image")));
             this.weaponOnePic.Location = new System.Drawing.Point(3, 3);
             this.weaponOnePic.Name = "weaponOnePic";
             this.weaponOnePic.Size = new System.Drawing.Size(113, 88);

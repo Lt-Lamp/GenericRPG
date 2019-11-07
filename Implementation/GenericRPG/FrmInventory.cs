@@ -56,6 +56,7 @@ namespace GenericRPG
                 WeaponOneLbl.Text = weapons[0].Name;
                 weaponOnePic.SizeMode = PictureBoxSizeMode.StretchImage;
                 weaponOnePic.Image = weapons[0].Img;
+                weaponOnePic.BackgroundImage = weapons[0].Img;
             }
            if(weapons.Count >= 2)
             {
@@ -132,6 +133,11 @@ namespace GenericRPG
         private void btnWeaponFour_Click(object sender, EventArgs e)
         {
             character.inventory.SetMainWeapon(3);
+        }
+
+        private void weaponOnePic_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

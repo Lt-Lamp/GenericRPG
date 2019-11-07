@@ -434,9 +434,9 @@
             // 
             this.panel3.AutoSize = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.weaponOnePic);
             this.panel3.Controls.Add(this.WeaponOneLbl);
             this.panel3.Controls.Add(this.btnWeaponOne);
+            this.panel3.Controls.Add(this.weaponOnePic);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(255, 96);
@@ -453,6 +453,7 @@
             this.weaponOnePic.Size = new System.Drawing.Size(113, 88);
             this.weaponOnePic.TabIndex = 15;
             this.weaponOnePic.TabStop = false;
+            this.weaponOnePic.Click += new System.EventHandler(this.weaponOnePic_Click);
             // 
             // WeaponOneLbl
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPlayerWeaponCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -433,9 +434,9 @@
             // 
             this.panel3.AutoSize = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.weaponOnePic);
             this.panel3.Controls.Add(this.WeaponOneLbl);
             this.panel3.Controls.Add(this.btnWeaponOne);
+            this.panel3.Controls.Add(this.weaponOnePic);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(255, 96);
@@ -445,11 +446,13 @@
             // 
             this.weaponOnePic.BackColor = System.Drawing.Color.Transparent;
             this.weaponOnePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.weaponOnePic.Image = ((System.Drawing.Image)(resources.GetObject("weaponOnePic.Image")));
             this.weaponOnePic.Location = new System.Drawing.Point(3, 3);
             this.weaponOnePic.Name = "weaponOnePic";
             this.weaponOnePic.Size = new System.Drawing.Size(113, 88);
             this.weaponOnePic.TabIndex = 15;
             this.weaponOnePic.TabStop = false;
+            this.weaponOnePic.Click += new System.EventHandler(this.weaponOnePic_Click);
             // 
             // WeaponOneLbl
             // 

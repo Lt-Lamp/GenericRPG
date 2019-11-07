@@ -24,6 +24,7 @@
     /// </summary>
     private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArena));
             this.lblPlayerHealth = new System.Windows.Forms.Label();
             this.picCharacter = new System.Windows.Forms.PictureBox();
             this.lblPlayerStr = new System.Windows.Forms.Label();
@@ -180,6 +181,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel1.Controls.Add(this.lblPlayerDamage);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblPlayerXp);
@@ -260,6 +262,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel2.Controls.Add(this.lblEnemyDamage);
             this.panel2.Controls.Add(this.lblEnemyLevel);
             this.panel2.Controls.Add(this.label7);
@@ -488,6 +491,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(706, 501);
             this.Controls.Add(this.lblEndFightMessage);
             this.Controls.Add(this.btnRun);

@@ -14,7 +14,7 @@ namespace GameLibrary {
 
     private static readonly Random rand = new Random();
     private static readonly List<string> names = new List<string>() {
-      "Boss", "Big Boss", "Gottem", "WallBuilder"
+      "Big Boss"
     };
 
     public Boss(int level, Bitmap img) : base(RandName(), level+2) {

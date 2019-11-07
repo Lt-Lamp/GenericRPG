@@ -66,36 +66,37 @@ namespace GenericRPG {
         }
         if (game.State == GameState.BOSSFIGHT) {
           FrmBossFight frmBossFight = new FrmBossFight();
+          character.inventory.AddWeapon(Killer);
           frmBossFight.Show();
           
           }
-                if (game.State == GameState.NEXT_LEVEL)
-                {
-                    //TODO:ZAB
-                    this.level_on += 1;
-                    game.ChangeState(GameState.LOADING);
-                    // needs character so he moves on level 2 and more 
-                    string loadmap = "Resources/level" +level_on.ToString() +".txt";
-                    CharWeaponList = character.inventory.ReturnWeaponList();
-                    character = map.LoadMap(loadmap, grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
-                    character.inventory.SetWeaponList(CharWeaponList);
-                    if(level_on == 2)
-                    {
-                        character.inventory.AddWeapon(Crawler);
-                    }
-                    if(level_on == 3)
-                    {
-                        character.inventory.AddWeapon(Destroyer);
-                    }
-                    Width = grpMap.Width + 25;
-                    Height = grpMap.Height + 50;
-                    //moves chararter back to start of level 
-                    character.BackToStart();
-                    //code below resets the character to level 1 
-                    //game.SetCharacter(character);
+        if (game.State == GameState.NEXT_LEVEL)
+        {
+            //TODO:ZAB
+            this.level_on += 1;
+            game.ChangeState(GameState.LOADING);
+            // needs character so he moves on level 2 and more 
+            string loadmap = "Resources/level" +level_on.ToString() +".txt";
+            CharWeaponList = character.inventory.ReturnWeaponList();
+            character = map.LoadMap(loadmap, grpMap,str => Resources.ResourceManager.GetObject(str) as Bitmap);
+            character.inventory.SetWeaponList(CharWeaponList);
+            if(level_on == 2)
+            {
+                character.inventory.AddWeapon(Crawler);
+            }
+            if(level_on == 3)
+            {
+                character.inventory.AddWeapon(Destroyer);
+            }
+            Width = grpMap.Width + 25;
+            Height = grpMap.Height + 50;
+            //moves chararter back to start of level 
+            character.BackToStart();
+            //code below resets the character to level 1 
+            //game.SetCharacter(character);
                    
                   
-                }
+        }
         if (game.State == GameState.DEAD)
                 {
                     //TODO : ZAB

@@ -51,7 +51,7 @@ namespace GenericRPG {
     public void UpdateStats() {      
       lblPlayerLevel.Text = character.Level.ToString();
       lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-      lblPlayerStr.Text = Math.Round(character.Str).ToString();
+      lblPlayerStr.Text = (weapon.Damage).ToString();
       lblPlayerDef.Text = Math.Round(character.Def).ToString();
       lblPlayerMana.Text = Math.Round(character.Mana).ToString();
       lblPlayerXp.Text = Math.Round(character.XP).ToString();
@@ -81,6 +81,7 @@ namespace GenericRPG {
       if (enemy.Health <= 0) {
         character.GainXP(enemy.XpDropped);
         lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
+        character.Mana = 40;
         lblEndFightMessage.Visible = true;
         Refresh();
         Thread.Sleep(1200);
@@ -122,29 +123,26 @@ namespace GenericRPG {
 
     private void btnManaAttack_Click(object sender, EventArgs e)
     {
-        float prevCharacterMana = character.Mana;
+        SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
         float prevEnemyHealth = enemy.Health;
+        weapon.ManaWeaponAttack(enemy);
         float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
         lblEnemyDamage.Text = enemyDamage.ToString();
-        SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
-        
         lblEnemyDamage.Visible = true;
         tmrEnemyDamage.Enabled = true;
-        
-
         if (character.Mana != 0)
         {
         sp.Play();
         weapon.ManaWeaponAttack(enemy);
-        character.Mana -= 5;
+        character.Mana -= 10;
             if (enemy.Health <= 0)
             {
                 character.GainXP(enemy.XpDropped);
                 lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
+                character.Mana = 40;
                 lblEndFightMessage.Visible = true;
                 Refresh();
                 Thread.Sleep(1200);
-                character.Mana = 40;
                 EndFight();
                 if (character.ShouldLevelUp)
                 {
@@ -155,10 +153,12 @@ namespace GenericRPG {
             else
             {
                 float prevPlayerHealth = character.Health;
+                enemy.SimpleAttack(character);
                 float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
                 lblPlayerDamage.Text = playerDamage.ToString();
                 lblPlayerDamage.Visible = true;
                 tmrPlayerDamage.Enabled = true;
+
                 sp = new SoundPlayer(@"Resources\emeny_attack.wav");
                 sp.Play();
                 if (character.Health <= 0)

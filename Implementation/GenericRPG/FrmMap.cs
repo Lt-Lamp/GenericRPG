@@ -28,7 +28,7 @@ namespace GenericRPG {
       character = map.LoadMap("Resources/level.txt", grpMap, 
         str => Resources.ResourceManager.GetObject(str) as Bitmap
       );
-      thunder_Fury = new Weapon(Resources.enemy, "ThunderFury", 5);
+      thunder_Fury = new Weapon(Resources.crawler, "Thunder Fury", 5);
       Crawler = new Weapon(Resources.GUN, "Crawler", 6);
       Destroyer = new Weapon(Resources.GUN, "Destroyer", 7);
       Killer = new Weapon(Resources.GUN, "Killer", 9);

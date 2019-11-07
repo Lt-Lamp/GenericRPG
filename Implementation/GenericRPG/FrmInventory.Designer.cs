@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInventory));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPlayerWeaponCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,9 +60,9 @@
             this.btnWeaponTwo = new System.Windows.Forms.Button();
             this.weaponTwoPic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.weaponOnePic = new System.Windows.Forms.PictureBox();
             this.WeaponOneLbl = new System.Windows.Forms.Label();
             this.btnWeaponOne = new System.Windows.Forms.Button();
+            this.weaponOnePic = new System.Windows.Forms.PictureBox();
             this.InvWeaponLbl = new System.Windows.Forms.Label();
             this.InvExitButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -334,6 +335,7 @@
             // 
             // weaponFourPic
             // 
+            this.weaponFourPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("weaponFourPic.BackgroundImage")));
             this.weaponFourPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.weaponFourPic.Location = new System.Drawing.Point(3, 3);
             this.weaponFourPic.Name = "weaponFourPic";
@@ -378,6 +380,7 @@
             // 
             // weaponThreePic
             // 
+            this.weaponThreePic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("weaponThreePic.BackgroundImage")));
             this.weaponThreePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.weaponThreePic.Location = new System.Drawing.Point(3, 5);
             this.weaponThreePic.Name = "weaponThreePic";
@@ -422,6 +425,8 @@
             // 
             // weaponTwoPic
             // 
+            this.weaponTwoPic.BackColor = System.Drawing.Color.Transparent;
+            this.weaponTwoPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("weaponTwoPic.BackgroundImage")));
             this.weaponTwoPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.weaponTwoPic.Location = new System.Drawing.Point(3, 3);
             this.weaponTwoPic.Name = "weaponTwoPic";
@@ -440,17 +445,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(255, 96);
             this.panel3.TabIndex = 15;
-            // 
-            // weaponOnePic
-            // 
-            this.weaponOnePic.BackColor = System.Drawing.Color.Transparent;
-            this.weaponOnePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.weaponOnePic.Location = new System.Drawing.Point(3, 3);
-            this.weaponOnePic.Name = "weaponOnePic";
-            this.weaponOnePic.Size = new System.Drawing.Size(113, 88);
-            this.weaponOnePic.TabIndex = 15;
-            this.weaponOnePic.TabStop = false;
-            this.weaponOnePic.Click += new System.EventHandler(this.weaponOnePic_Click);
             // 
             // WeaponOneLbl
             // 
@@ -474,6 +468,19 @@
             this.btnWeaponOne.Text = "Enable";
             this.btnWeaponOne.UseVisualStyleBackColor = false;
             this.btnWeaponOne.Click += new System.EventHandler(this.btnWeaponOne_Click);
+            // 
+            // weaponOnePic
+            // 
+            this.weaponOnePic.BackColor = System.Drawing.Color.Transparent;
+            this.weaponOnePic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("weaponOnePic.BackgroundImage")));
+            this.weaponOnePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.weaponOnePic.InitialImage = null;
+            this.weaponOnePic.Location = new System.Drawing.Point(3, 3);
+            this.weaponOnePic.Name = "weaponOnePic";
+            this.weaponOnePic.Size = new System.Drawing.Size(113, 88);
+            this.weaponOnePic.TabIndex = 15;
+            this.weaponOnePic.TabStop = false;
+            this.weaponOnePic.Click += new System.EventHandler(this.weaponOnePic_Click);
             // 
             // InvWeaponLbl
             // 

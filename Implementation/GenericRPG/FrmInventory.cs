@@ -56,7 +56,6 @@ namespace GenericRPG
                 WeaponOneLbl.Text = weapons[0].Name;
                 weaponOnePic.SizeMode = PictureBoxSizeMode.StretchImage;
                 weaponOnePic.Image = weapons[0].Img;
-                weaponOnePic.BackgroundImage = weapons[0].Img;
             }
            if(weapons.Count >= 2)
             {

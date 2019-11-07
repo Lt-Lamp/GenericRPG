@@ -38,7 +38,7 @@ namespace GenericRPG
 
             game = Game.GetGame();
             character = game.Character;
-            boss = new Boss(rand.Next(character.Level + 1), Resources.boss);
+            boss = new Boss(rand.Next(character.Level + 3), Resources.boss);
 
             // stats
             UpdateStats();
@@ -179,6 +179,11 @@ namespace GenericRPG
         }
 
         private void FrmBossFight_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picEnemy_Click(object sender, EventArgs e)
         {
 
         }

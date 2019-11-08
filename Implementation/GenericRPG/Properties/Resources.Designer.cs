@@ -33,6 +33,7 @@ namespace GenericRPG.Properties {
         internal Resources() {
         }
 
+        public static Bitmap boss { get; internal set; }
 
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
@@ -59,6 +60,26 @@ namespace GenericRPG.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arena {
+            get {
+                object obj = ResourceManager.GetObject("arena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Boss {
+            get {
+                object obj = ResourceManager.GetObject("Boss", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -119,19 +140,7 @@ namespace GenericRPG.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap boss
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("boss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -165,7 +174,7 @@ namespace GenericRPG.Properties {
         ///   Looks up a localized string similar to 11111111111
         ///11111000031
         ///10100011111
-        ///12101110041
+        ///10101110241
         ///10000010111
         ///10101000051
         ///11111111111.

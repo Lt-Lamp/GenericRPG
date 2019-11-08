@@ -12,7 +12,6 @@ namespace GenericRPG
     {
         private Game game;
         private Character character;
-        private Enemy enemy;
         private Weapon weapon;
         private Random rand;
         private Boss boss;
@@ -180,14 +179,9 @@ namespace GenericRPG
             }
         }
 
-        private void picEnemy_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnMagicAttack_Click(object sender, EventArgs e)
         {
-            SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
             float prevEnemyHealth = boss.Health;
             weapon.ManaWeaponAttack(boss);
             float enemyDamage = (float)Math.Round(prevEnemyHealth - boss.Health);
@@ -196,7 +190,6 @@ namespace GenericRPG
             tmrEnemyDamage.Enabled = true;
             if (character.Mana != 0)
             {
-                sp.Play();
                 weapon.ManaWeaponAttack(boss);
                 character.Mana -= 10;
                 if (boss.Health <= 0)
@@ -223,8 +216,6 @@ namespace GenericRPG
                     lblPlayerDamage.Visible = true;
                     tmrPlayerDamage.Enabled = true;
 
-                    sp = new SoundPlayer(@"Resources\emeny_attack.wav");
-                    sp.Play();
                     if (character.Health <= 0)
                     {
                         UpdateStats();

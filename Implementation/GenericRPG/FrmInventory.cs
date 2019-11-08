@@ -33,9 +33,10 @@ namespace GenericRPG
 
         private void UpdatePlayerInfo()
         {
+            Weapon weapon = character.inventory.ReturnMainWeapon();
             lblPlayerLevel.Text = character.Level.ToString();
             lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-            lblPlayerStr.Text = Math.Round(character.Str).ToString();
+            lblPlayerStr.Text = weapon.Damage.ToString();
             lblPlayerDef.Text = Math.Round(character.Def).ToString();
             lblPlayerMana.Text = Math.Round(character.Mana).ToString();
             lblPlayerXp.Text = Math.Round(character.XP).ToString();
@@ -117,21 +118,25 @@ namespace GenericRPG
         private void btnWeaponOne_Click(object sender, EventArgs e)
         {
             character.inventory.SetMainWeapon(0);
+            UpdatePlayerInfo();
         }
 
         private void btnWeaponTwo_Click(object sender, EventArgs e)
         {
             character.inventory.SetMainWeapon(1);
+            UpdatePlayerInfo();
         }
 
         private void btnWeaponThree_Click(object sender, EventArgs e)
         {
             character.inventory.SetMainWeapon(2);
+            UpdatePlayerInfo();
         }
 
         private void btnWeaponFour_Click(object sender, EventArgs e)
         {
             character.inventory.SetMainWeapon(3);
+            UpdatePlayerInfo();
         }
 
         private void weaponOnePic_Click(object sender, EventArgs e)

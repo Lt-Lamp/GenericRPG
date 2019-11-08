@@ -13,6 +13,7 @@ namespace GenericRPG
         private Game game;
         private Character character;
         private Enemy enemy;
+        private Weapon weapon;
         private Random rand;
         private Boss boss;
 
@@ -31,13 +32,14 @@ namespace GenericRPG
             Game.GetGame().ChangeState(GameState.ON_MAP);
             Close();
         }
-        private void FrmArena_Load(object sender, EventArgs e)
+        private void FrmBossFight_Load(object sender, EventArgs e)
         {
 
             rand = new Random();
 
             game = Game.GetGame();
             character = game.Character;
+            weapon = character.inventory.ReturnMainWeapon();
             boss = new Boss(rand.Next(character.Level + 3), Resources.boss);
 
             // stats
@@ -79,7 +81,7 @@ namespace GenericRPG
                 lblEndFightMessage.Visible = false;
             }
             float prevEnemyHealth = boss.Health;
-            character.SimpleAttack(boss);
+            weapon.SimpleWeaponAttack(boss);
             float enemyDamage = (float)Math.Round(prevEnemyHealth - boss.Health);
             lblEnemyDamage.Text = enemyDamage.ToString();
             lblEnemyDamage.Visible = true;
@@ -135,7 +137,7 @@ namespace GenericRPG
         private void btnRun_Click(object sender, EventArgs e)
         {
             SoundPlayer sp = new SoundPlayer(@"Resources\bossmusic.wav");
-            enemy.SimpleAttack(character);
+            boss.SimpleAttack(character);
                 UpdateStats();
                 lblEndFightMessage.Text = "You can't run from the boss!";
                 lblEndFightMessage.Visible = true;
@@ -178,14 +180,77 @@ namespace GenericRPG
             }
         }
 
-        private void FrmBossFight_Load(object sender, EventArgs e)
+        private void picEnemy_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void picEnemy_Click(object sender, EventArgs e)
+        private void btnMagicAttack_Click(object sender, EventArgs e)
         {
+            SoundPlayer sp = new SoundPlayer(@"Resources\chararter_attack.wav");
+            float prevEnemyHealth = boss.Health;
+            weapon.ManaWeaponAttack(boss);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - boss.Health);
+            lblEnemyDamage.Text = enemyDamage.ToString();
+            lblEnemyDamage.Visible = true;
+            tmrEnemyDamage.Enabled = true;
+            if (character.Mana != 0)
+            {
+                sp.Play();
+                weapon.ManaWeaponAttack(boss);
+                character.Mana -= 10;
+                if (boss.Health <= 0)
+                {
+                    character.GainXP(boss.XpDropped);
+                    lblEndFightMessage.Text = "You Gained " + Math.Round(boss.XpDropped) + " xp!";
+                    character.Mana = 40;
+                    lblEndFightMessage.Visible = true;
+                    Refresh();
+                    Thread.Sleep(1200);
+                    EndFight();
+                    if (character.ShouldLevelUp)
+                    {
+                        FrmLevelUp frmLevelUp = new FrmLevelUp();
+                        frmLevelUp.Show();
+                    }
+                }
+                else
+                {
+                    float prevPlayerHealth = character.Health;
+                    boss.SimpleAttack(character);
+                    float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
+                    lblPlayerDamage.Text = playerDamage.ToString();
+                    lblPlayerDamage.Visible = true;
+                    tmrPlayerDamage.Enabled = true;
 
+                    sp = new SoundPlayer(@"Resources\emeny_attack.wav");
+                    sp.Play();
+                    if (character.Health <= 0)
+                    {
+                        UpdateStats();
+                        game.ChangeState(GameState.DEAD);
+                        lblEndFightMessage.Text = "You Were Defeated!";
+                        lblEndFightMessage.Visible = true;
+                        Refresh();
+                        Thread.Sleep(1200);
+                        EndFight();
+                        FrmGameOver frmGameOver = new FrmGameOver();
+                        frmGameOver.Show();
+                    }
+                    else
+                    {
+                        UpdateStats();
+
+                    }
+                }
+            }
+            else
+            {
+                lblEndFightMessage.Text = "You have no more mana";
+                lblEndFightMessage.Visible = true;
+                lblEnemyDamage.Visible = false;
+
+            };
         }
     }
 }

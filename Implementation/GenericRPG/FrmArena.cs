@@ -30,7 +30,7 @@ namespace GenericRPG {
     }
     private void FrmArena_Load(object sender, EventArgs e) {
 
-                rand = new Random();
+      rand = new Random();
 
       game = Game.GetGame();
       character = game.Character;

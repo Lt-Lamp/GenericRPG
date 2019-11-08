@@ -200,10 +200,14 @@ namespace GameLibrary {
             {
                 Game.GetGame().ChangeState(GameState.NEXT_LEVEL);
             }
-      if (layout[pos.row, pos.col] == 5)
+      if (layout[pos.row, pos.col] == 4)
             {
-                Game.GetGame().ChangeState(GameState.DEAD);
+               Game.GetGame().ChangeState(GameState.BOSSFIGHT);
             }
+      if (layout[pos.row, pos.col] == 5)
+           {
+                Game.GetGame().ChangeState(GameState.DEAD);
+           }
       else {
         //DEBUG:ZAB
         encounterChance += 0.10;

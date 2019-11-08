@@ -54,6 +54,12 @@
     <Compile Include="FrmArena.Designer.cs">
       <DependentUpon>FrmArena.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBossFight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBossFight.Designer.cs">
+      <DependentUpon>FrmBossFight.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGameOver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="FrmArena.resx">
       <DependentUpon>FrmArena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBossFight.resx">
+      <DependentUpon>FrmBossFight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGameOver.resx">
       <DependentUpon>FrmGameOver.cs</DependentUpon>
@@ -123,7 +132,18 @@
     <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\titlescreen.jpg" />
+    <None Include="Resources\boss.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\bossmusic.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\victory.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Arena.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\won_the_battle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

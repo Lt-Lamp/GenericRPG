@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
 
 namespace GameLibrary {
   public struct Position {
@@ -16,12 +18,68 @@ namespace GameLibrary {
     }
   }
 
+public struct Inventory
+{
+    public int MainWeapon;
+    public List<Weapon> WeaponList;
+    public Inventory(int main, List<Weapon> weplist)
+        {
+            this.MainWeapon = main;
+            this.WeaponList = weplist;
+        }
+    public void AddWeapon(Weapon weapon)
+        {
+            //Makes sure there aren't already 4 weapons in the inventory
+            if(WeaponList.Count < 4)
+            {
+                //if MainWeapon is at a default of -1, then set it to 0.
+                if (MainWeapon == -1)
+                {
+                    MainWeapon = 0;
+                    WeaponList.Add(weapon);
+                }
+                else
+                {
+                    WeaponList.Add(weapon);
+                }
+            }
+        }
+    public void SetMainWeapon(int choosenindex)
+        {
+            //Checks if weaponindex is less than number in the inventory and checks to make sure weapons dont get over a total of 4
+            if(choosenindex < WeaponList.Count + 1 && choosenindex < 4)
+            {
+                MainWeapon = choosenindex;
+            }
+        }
+    public List<Weapon> ReturnWeaponList()
+        {
+            return WeaponList;
+        }
+    public Weapon ReturnMainWeapon()
+        {
+            return WeaponList[MainWeapon];
+        }
+    public void ResetWeaponList()
+        {
+            //Clear the weapon list and reset the choosen weapon index to -1
+            WeaponList.Clear();
+            MainWeapon = 0;
+        }
+    public void SetWeaponList(List<Weapon> weaponList)
+        {
+            WeaponList.Clear();
+            WeaponList = weaponList;
+        }
+    }
+
   /// <summary>
   /// This represents our player in our game
   /// </summary>
-  public class Character : Mortal {
+  public class Character : Mortal{
     public PictureBox Pic { get; private set; }
     private Position pos;
+    public Inventory inventory;
     private Map map;
     public float XP { get; private set; }
     public bool ShouldLevelUp { get; private set; }
@@ -32,10 +90,13 @@ namespace GameLibrary {
     /// <param name="pb"></param>
     /// <param name="pos"></param>
     /// <param name="map"></param>
-    public Character(PictureBox pb, Position pos, Map map) : base("Player 1", 1) {
+    /// <param name="inv"></param>
+    public Character(PictureBox pb, Position pos, Inventory inv, Map map) : base("Player 1", 1)  {
       Pic = pb;
       this.pos = pos;
+      this.inventory = inv;
       this.map = map;
+      
       ShouldLevelUp = false;
     }
 

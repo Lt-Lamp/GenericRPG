@@ -34,6 +34,8 @@ namespace GameLibrary {
       int left = BOUNDARY_PAD;
       Character character = null;
       List<string> mapLines = new List<string>();
+
+
       
       // read from map file
       using (FileStream fs = new FileStream(mapFile, FileMode.Open)) {
@@ -69,7 +71,7 @@ namespace GameLibrary {
             //just a check probbily not needed
             if (character == null)
                         {
-                            character = new Character(pb, new Position(i, j), this);
+                            character = new Character(pb, new Position(i, j), new Inventory(0, new List<Weapon>()), this);
                         }
             else
                         {

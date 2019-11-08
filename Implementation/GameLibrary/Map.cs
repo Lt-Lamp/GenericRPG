@@ -34,6 +34,8 @@ namespace GameLibrary {
       int left = BOUNDARY_PAD;
       Character character = null;
       List<string> mapLines = new List<string>();
+
+
       
       // read from map file
       using (FileStream fs = new FileStream(mapFile, FileMode.Open)) {
@@ -69,7 +71,7 @@ namespace GameLibrary {
             //just a check probbily not needed
             if (character == null)
                         {
-                            character = new Character(pb, new Position(i, j), this);
+                            character = new Character(pb, new Position(i, j), new Inventory(0, new List<Weapon>()), this);
                         }
             else
                         {
@@ -200,10 +202,14 @@ namespace GameLibrary {
             {
                 Game.GetGame().ChangeState(GameState.NEXT_LEVEL);
             }
-      if (layout[pos.row, pos.col] == 5)
+      if (layout[pos.row, pos.col] == 4)
             {
-                Game.GetGame().ChangeState(GameState.DEAD);
+               Game.GetGame().ChangeState(GameState.BOSSFIGHT);
             }
+      if (layout[pos.row, pos.col] == 5)
+           {
+                Game.GetGame().ChangeState(GameState.DEAD);
+           }
       else {
         //DEBUG:ZAB
         encounterChance += 0.10;

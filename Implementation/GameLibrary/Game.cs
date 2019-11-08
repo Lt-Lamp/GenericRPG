@@ -11,18 +11,25 @@ namespace GameLibrary {
     TITLE_SCREEN,
     ON_MAP,
     FIGHTING,
+    BOSSFIGHT,
     DEAD,
+    INVENTORY,
   }
 
   public class Game {
     private static Game game;
 
     public Character Character { get; private set; }
+    public Weapon FWeapon { get; private set; }
+    public Weapon SWeapon { get; private set; }
+    public Weapon TWeapon { get; private set; }
+    public Weapon RWeapon { get; private set; }
+
     public GameState State { get; private set; }
 
     private Game() {
       State = GameState.LOADING;
-    }
+        }
 
     public static Game GetGame() {
       if (game == null)
@@ -37,5 +44,6 @@ namespace GameLibrary {
     public void SetCharacter(Character character) {
       Character = character;
     }
+
   }
 }

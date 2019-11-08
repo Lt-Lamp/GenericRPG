@@ -10,8 +10,9 @@
 
 namespace GenericRPG.Properties {
     using System;
-    
-    
+    using System.Drawing;
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -31,7 +32,9 @@ namespace GenericRPG.Properties {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
+        public static Bitmap boss { get; internal set; }
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -57,6 +60,26 @@ namespace GenericRPG.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arena {
+            get {
+                object obj = ResourceManager.GetObject("arena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Boss {
+            get {
+                object obj = ResourceManager.GetObject("Boss", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -151,7 +174,7 @@ namespace GenericRPG.Properties {
         ///   Looks up a localized string similar to 11111111111
         ///11111000031
         ///10100011111
-        ///12101110041
+        ///10101110241
         ///10000010111
         ///10101000051
         ///11111111111.
@@ -176,9 +199,9 @@ namespace GenericRPG.Properties {
         ///   Looks up a localized string similar to 11111111111
         ///10101000021
         ///10000011111
-        ///10100004041
+        ///10100000041
         ///10000010111
-        ///13100004041
+        ///13100000051
         ///11111111111.
         /// </summary>
         internal static string level21 {
@@ -191,7 +214,7 @@ namespace GenericRPG.Properties {
         ///   Looks up a localized string similar to 11111111111
         ///10001000041
         ///10101011111
-        ///10101000041
+        ///10101000001
         ///10101010111
         ///12100000051
         ///11111111111.
@@ -234,6 +257,16 @@ namespace GenericRPG.Properties {
         internal static string test {
             get {
                 return ResourceManager.GetString("test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap titlescreen {
+            get {
+                object obj = ResourceManager.GetObject("titlescreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

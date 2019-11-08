@@ -10,7 +10,7 @@ namespace GenericRPG {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new FrmMap());
+      Application.Run(new TitleScreen());
     }
   }
 }
